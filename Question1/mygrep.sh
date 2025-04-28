@@ -17,7 +17,7 @@ if [ "$#" -eq 3 ]; then
 
 # Basic Functionality
 elif [ "$#" -eq 2 ]; then
-    if [ "$1" == -* -a -f "$2" ]; then
+    if [[ "$1" == -* && -f "$2" ]]; then
         echo "Warning: missing search string" 
         exit 1
     elif [ "$1" == -* ]; then
