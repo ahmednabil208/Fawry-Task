@@ -1,0 +1,47 @@
+**Step 1: Verify DNS Resolution**
+
+Command: dig internal.example.com
+DNS Issue: no servers could be reached
+DNS is Working: The output shows the IP address
+--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*
+
+**Step 2: Check The Service Reachability**
+
+Command: curl -v http://internal.example.com
+Service is unreachable: Could not resolve host
+--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*
+
+**Step 3: Check The Firewall Blocked ports**
+
+Command: sudo firewall-cmd --list-all
+Solution: if the port is blocked 
+Commands:
+sudo firewall-cmd --permanent --add-service=http --add-service=https 
+sudo firewall-cmd --reload
+--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*--*
+
+Trace the Issue – List All Possible Causes
+1- DNS Problems
+    1.1- Wrong nameserver in /etc/resolv.conf
+        Solution: - vim /etc/resolv.conf
+                  - Set the correct ip address in /etc/resolv.conf
+    1.2- DNS server down:
+        Solution: - check another DNS server using command: dig @8.8.8.8 internal.example.com
+
+2- Network Problem
+    2.1- Firewall blocking port
+        Solution: - sudo firewall-cmd --permanent --add-service=http
+                  - sudo firewall-cmd --permanent --add-service=https
+                  - sudo firewall-cmd --reload
+
+3- Service Problem:
+    Solution: 1- check service status (if docker: docker ps)
+              2- id the service stopped: docker start service_id
+
+
+
+
+
+
+
+
