@@ -39,7 +39,7 @@ fi
 
 
 if [ "$option" == 0 ]; then
-    grep "$pattern" "$files"
+    grep -i "$pattern" "$files"
 elif [ "$option" == "-n" ]; then
     grep -n "$pattern" "$files"
 elif [ "$option" == "-v" ]; then
