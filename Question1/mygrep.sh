@@ -33,7 +33,7 @@ elif [ "$#" -eq 2 ]; then
 fi
 
 if [ ! -f "$files" ]; then
-    echo "Error: File '$file' not found!"
+    echo "Error: File '$files' not found!"
     exit 1
 fi
 
@@ -41,9 +41,9 @@ fi
 if [ "$option" == 0 ]; then
     grep -i "$pattern" "$files"
 elif [ "$option" == "-n" ]; then
-    grep -n "$pattern" "$files"
+    grep -ni "$pattern" "$files"
 elif [ "$option" == "-v" ]; then
-    grep -v "$pattern" "$files"
+    grep -vi "$pattern" "$files"
 elif [ "$option" == "-nv" -o "$option" == "-vn" ]; then
-    grep -nv "$pattern" "$files"
+    grep -nvi "$pattern" "$files"
 fi
