@@ -1,0 +1,22 @@
+1. How my script handles arguments and options
+    In my script, I first check how many arguments the user gives.
+        If there are three arguments, I treat the first one as an option, the second as the pattern to search for, and the third as the filename.
+
+        If there are two arguments, I check if the first one is an option:
+            If the second argument is a file and no pattern is given, I show a warning: "missing search string" and exit.
+
+        Otherwise, I treat the first argument as the pattern and the second as the file.
+
+After that, I check if the file actually exists. If not, I show an error.
+
+Depending on the option given, I run grep with different flags (like -n, -v, or both).
+---------------------------------------------------------------------------------------------------
+
+2. If I wanted to support regex or more options like -i, -c, -l
+    I would either add more elif conditions for each new option, 
+    or I would use a for loop to process multiple options together and build the grep command dynamically.
+
+-------------------------------------------------------------------------------------------------------
+3. What part of the script was hardest and why
+    The hardest part for me was adding the warning message when the pattern was missing,
+    because I got confused about how the script could knowl the difference between the file and the option in different situations.
